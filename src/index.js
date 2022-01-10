@@ -1,4 +1,4 @@
-let doZeroToNinetyNine = function(number) {
+let doZeroToNinetyNine = function(number,numberZeroToNine, numberElevenToNinteen, numberDozens) {
     if ( 0 <= number && number <= 9 ) {
       for (let i = 0; i < numberZeroToNine.length; i += 1) {
           if (number == i){
@@ -32,7 +32,7 @@ module.exports = function toReadable (number) {
 
 
   if ( 0 <= number && number <= 99 ) {
-    return doZeroToNinetyNine(number); 
+    return doZeroToNinetyNine(number, numberZeroToNine, numberElevenToNinteen, numberDozens); 
   } else if ( 100 <= number && number <= 999) {
       if (number.toString().slice(-2) == '00' && number.toString().length == 3) {
         let locNumber = number / 100;
