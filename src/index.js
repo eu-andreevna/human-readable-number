@@ -41,6 +41,20 @@ module.exports = function toReadable (number) {
                 return numberZeroToNine[i] + ' hundred';
             }
         }
+    } else {
+        let locNumber = Math.trunc(number / 100);
+        let numberTwo = number % 100;
+        let hundred;
+        let dozensUnits;
+        for (let i = 1; i < numberZeroToNine.length; i += 1) {
+            if (locNumber == i){
+                hundred = numberZeroToNine[i] + ' hundred';
+            }
+        }
+
+        dozensUnits = doZeroToNinetyNine(numberTwo, numberZeroToNine, numberElevenToNinteen, numberDozens);
+        
+        return hundred + ' ' + dozensUnits;
     }
   }
 }
