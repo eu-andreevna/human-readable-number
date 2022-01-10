@@ -4,10 +4,20 @@ module.exports = function toReadable (number) {
   let numberDozens = ['ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
   let hundred = 'hundred';
 
+
   if ( 0 <= number && number <= 9 ) {
       for (let i = 0; i < numberZeroToNine.length; i += 1) {
           if (number == i){
               return numberZeroToNine[i];
+          }
+      }
+  } else if (number.toString().slice(-1) == '0' && number.toString().length == 2) {
+    return numberDozens[number / 10 - 1];
+  } else if ( 11 <= number && number <= 19) {
+      for (let i = 0; i < numberElevenToNinteen.length; i += 1) {
+        let locNumber = 10 + i + 1;
+        if (number == locNumber){
+              return numberElevenToNinteen[i];
           }
       }
   }
