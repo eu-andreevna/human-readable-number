@@ -2,7 +2,6 @@ module.exports = function toReadable (number) {
   let numberZeroToNine = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine' ];
   let numberElevenToNinteen = ['eleven','twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
   let numberDozens = ['ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
-  let hundred = 'hundred';
 
 
   if ( 0 <= number && number <= 9 ) {
@@ -18,6 +17,13 @@ module.exports = function toReadable (number) {
         let locNumber = 10 + i + 1;
         if (number == locNumber){
               return numberElevenToNinteen[i];
+          }
+      }
+  }  else if (number.toString().slice(-2) == '00' && number.toString().length == 3) {
+      let locNumber = number / 100;
+      for (let i = 1; i < numberZeroToNine.length; i += 1) {
+          if (locNumber == i){
+              return numberZeroToNine[i] + ' hundred';
           }
       }
   }
